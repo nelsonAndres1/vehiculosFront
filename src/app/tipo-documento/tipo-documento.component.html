@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+
+  <title>Crear Clase de Vehiculo</title>
+</head>
+
+<body>
+  <div class="contenedor-formularios">
+    <div id="registrarse">
+      <h1>Ingrese los datos requeridos</h1>
+      <form action="#" #tipForm="ngForm" (ngSubmit)="onSubmit(tipForm)">
+        <div class="contenedor-input">
+          <label>
+            Nombre del Tipo de Documento<span class="req">*</span>
+          </label>
+          <br>
+          <br>
+          <input type="text" #detdoc="ngModel" [(ngModel)]="tipo_documento.detdoc" name="detdoc" required>
+          <small *ngIf="!detdoc.valid && detdoc.touched" class="invalid-feedback d-block">
+            ¡Campo requerido!
+          </small>
+        </div>
+        <input type="submit" class="button button-block" value="Enviar Datos">
+      </form>
+    </div>
+  </div>
+
+
+  <cdk-virtual-scroll-viewport style="height: 600px" itemSize=5>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Detalle</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *cdkVirtualFor="let dt of tipo_documentos | filter:filterPost">
+          <th scope="row">{{dt.id}}</th>
+          <td>{{dt.detdoc}}</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </cdk-virtual-scroll-viewport>
+
+
+</body>
+
+</html>

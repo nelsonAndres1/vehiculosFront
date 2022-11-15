@@ -16,6 +16,7 @@ export class Tipo_documentoService{
     register(user:any):Observable<any>{
         let json = JSON.stringify(user);
         let params = 'json='+json;
+        console.log("parametros");
         console.log(params);
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post(this.url+'Tipo_documento/register', params, {headers: headers});

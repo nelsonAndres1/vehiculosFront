@@ -18,9 +18,11 @@ export class TipoDocumentoComponent implements OnInit {
   public status: any;
   public tokenConsultado: any;
   public identityConsultado: any;
+  public banderaFechas: any;
+
   constructor(private _tipo_documentoService: Tipo_documentoService, private _router: Router, private _route: ActivatedRoute) {
     this.identity = JSON.parse(localStorage.getItem('identity') + '');
-    this.tipo_documento = new Tipo_Documento(0, '', this.identity.sub);
+    this.tipo_documento = new Tipo_Documento(0, '', this.identity.sub, '');
     this.getTipo_documento();
   }
 
@@ -37,39 +39,89 @@ export class TipoDocumentoComponent implements OnInit {
       confirmButtonText: 'Si'
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log("tipo de documento");
-        console.log(this.tipo_documento);
-        this._tipo_documentoService.register(this.tipo_documento).subscribe(
-          response => {
-            if (response.status != 'error') {
-              Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: '¡Datos Guardados!',
-                showConfirmButton: false,
-                timer: 1500
-              })
-              form.reset();
-              this.getTipo_documento();
-            } else {
-              Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: '¡Datos No Guardados!',
-                showConfirmButton: false,
-                timer: 1500
-              })
-            }
-          }, error=>{
-            Swal.fire({
-              position: 'top-end',
-              icon: 'error',
-              title: '¡Datos No Guardados!',
-              showConfirmButton: false,
-              timer: 1500
-            })
+
+        Swal.fire({
+          title: '¿El documento requiere fechas de vencimiento?',
+          showDenyButton: true,
+          confirmButtonText: 'Si',
+          denyButtonText: `No`,
+          icon: 'question',
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            this.tipo_documento.banfec = 'true';
+            console.log("tipo de documento");
+            console.log(this.tipo_documento);
+            this._tipo_documentoService.register(this.tipo_documento).subscribe(
+              response => {
+                if (response.status != 'error') {
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: '¡Datos Guardados!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  form.reset();
+                  this.getTipo_documento();
+                } else {
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: '¡Datos No Guardados!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                }
+              }, error => {
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'error',
+                  title: '¡Datos No Guardados!',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+              }
+            )
+
+          } else if (result.isDenied) {
+
+            this.tipo_documento.banfec = 'false';
+            console.log("tipo de documento");
+            console.log(this.tipo_documento);
+            this._tipo_documentoService.register(this.tipo_documento).subscribe(
+              response => {
+                if (response.status != 'error') {
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: '¡Datos Guardados!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                  form.reset();
+                  this.getTipo_documento();
+                } else {
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: '¡Datos No Guardados!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                }
+              }, error => {
+                Swal.fire({
+                  position: 'top-end',
+                  icon: 'error',
+                  title: '¡Datos No Guardados!',
+                  showConfirmButton: false,
+                  timer: 1500
+                })
+              }
+            )
           }
-        )
+        })
       }
     });
   }
@@ -79,10 +131,12 @@ export class TipoDocumentoComponent implements OnInit {
       response => {
         console.log("respiuesta");
         console.log(response);
-        this.tipo_documentos = response; 
-/*         this.clase_vehiculos = response; */
+        this.tipo_documentos = response;
       }
     )
   }
+
+
+
 
 }

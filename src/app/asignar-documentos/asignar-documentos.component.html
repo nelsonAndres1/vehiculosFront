@@ -1,0 +1,142 @@
+<div class="container">
+    <div class="left">
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+            <div class="row justify-content-center">
+                <h2>
+                    Documentos con fecha.
+                </h2>
+                <div class="col-md-10 offset-md-1">
+                    <span class="anchor" id="formComplex"></span>
+                    <div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Ingrese la información requerida</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mt-12">
+                                <!-- primer nombre -->
+                                <div class="col-sm-12 pb-3 form-group">
+                                    <label for="exampleAccount" for="iddoc"><b>Documento *</b></label>
+                                    <select class="form-select col" id="inputGroupSelect01" name="iddoc"
+                                        placeholder="iddoc" for="iddoc" #iddoc="ngModel" [(ngModel)]="documentosCF.iddoc"
+                                        required>
+                                        <option *ngFor="let td of docConFecha" value={{td.id}}>{{td.id}} - {{td.detdoc}}</option>
+                                    </select>
+                                </div>
+                                <!-- Segundo Nombre -->
+                            </div>
+                            <div class="row mt-12">
+                                <div class="col-sm-6 pb-3 form-group">
+
+                                    <label for="exampleAccount" for="fecini"><b>Fecha Inicial *</b></label>
+                                    <input type="date" class="form-control" id="exampleAccount" name="fecini"
+                                        value=today min="1920-01-01" max="2020-12-31" placeholder="Fecha Inicial"
+                                        #fecini="ngModel" [(ngModel)]="documentosCF.fecini" required>
+                                    <small *ngIf="!fecini.valid && fecini.touched" class="invalid-feedback d-block">
+                                        Dato Incorrecto!
+                                    </small>
+
+                                </div>
+                                <div class="col-sm-6 pb-3 form-group">
+
+                                    <label for="exampleAccount" for="fecfin"><b>Fecha Final *</b></label>
+                                    <input type="date" class="form-control" id="exampleAccount" name="fecfin"
+                                        value=today min="1920-01-01" max="2020-12-31" placeholder="Fecha Final"
+                                        #fecfin="ngModel" [(ngModel)]="documentosCF.fecfin" required>
+                                    <small *ngIf="!fecfin.valid && fecfin.touched" class="invalid-feedback d-block">
+                                        Dato Incorrecto!
+                                    </small>
+
+                                </div>
+                            </div>
+                            <!-- Apellidos -->
+                            <div class="row mt-12">
+                                <!-- primer apellido -->
+                                <div class="col-sm-12 pb-3 form-group">
+                                    <label for="exampleAccount" for="observacion"><b>Observación</b></label>
+                                    <input class="form-control" id="exampleAccount" name="observacion"
+                                        placeholder="Primer Nombre" type="text" #observacion="ngModel"
+                                        [(ngModel)]="documentosCF.observacion">
+                                    <small *ngIf="!observacion.valid && observacion.touched"
+                                        class="invalid-feedback d-block">
+                                        El campo no es valido!
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row mt-4">
+                                <div class="float-right">
+                                    <div class="row mt-4">
+                                        <div class="col-sm-10 pb-3">
+                                            <input class="btn btn-success" type="submit" value="Enviar Información"
+                                                [disabled]="registerForm.invalid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="right">
+        <form #registerSFForm="ngForm" (ngSubmit)="onSubmit(registerSFForm)">
+            <div class="row justify-content-center">
+                <h2>
+                    Documentos sin fecha.
+                </h2>
+                <div class="col-md-10 offset-md-1">
+                    <span class="anchor" id="formComplex"></span>
+                    <div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Ingrese la información requerida</h3>
+                        </div>
+                        <div class="card-body">
+                            <br>
+                            <div class="row mt-12">
+                                <div class="col-sm-12 pb-3 form-group">
+                                    <label for="exampleAccount" for="iddoc"><b>Documento *</b></label>
+                                    <select class="form-select col" id="inputGroupSelect01" name="iddoc"
+                                        placeholder="iddoc" for="iddoc" #iddoc="ngModel" [(ngModel)]="documentosSF.iddoc"
+                                        required>
+                                        <option *ngFor="let td of docSinFecha" value={{td.id}}> {{td.id}} - {{td.detdoc}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row mt-12">
+
+                                <div class="col-sm-12 pb-3 form-group">
+                                    <label for="exampleAccount" for="observacion"><b>Observación</b></label>
+                                    <input class="form-control" id="exampleAccount" name="observacion"
+                                        placeholder="Primer Nombre" type="text" #observacion="ngModel"
+                                        [(ngModel)]="documentosSF.observacion">
+                                    <small *ngIf="!observacion.valid && observacion.touched"
+                                        class="invalid-feedback d-block">
+                                        El campo no es valido!
+                                    </small>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row mt-4">
+                                <div class="float-right">
+                                    <div class="row mt-4">
+                                        <div class="col-sm-10 pb-3">
+                                            <input class="btn btn-success" type="submit" value="Enviar Información"
+                                                [disabled]="registerSFForm.invalid">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

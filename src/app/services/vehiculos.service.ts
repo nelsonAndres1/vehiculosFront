@@ -27,6 +27,17 @@ export class vehiculosService{
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post(this.url+'Vehiculos/getVehiculos', params, {headers: headers});
     }
+    searchVehiculo(pclave: any) {
+        const response = new Promise(
+            resolve => {
+                this._http.get(global.url + `vehiculos/searchVehiculo?search=${pclave}`).subscribe(data => {
+                    resolve(data);
+                }, err => {
+                    console.log(err);
+                });
+            });
+        return response;
+    }
 
     
 }

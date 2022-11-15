@@ -30,6 +30,7 @@ import { Gener02Service } from './services/gener02.service';
 import { VehiculosComponent } from './vehiculos/vehiculos.component';
 import { TipoDocumentoComponent } from './tipo-documento/tipo-documento.component';
 import { DocumentosVehiculoComponent } from './documentos-vehiculo/documentos-vehiculo.component';
+import { AsignarDocumentosComponent } from './asignar-documentos/asignar-documentos.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { DocumentosVehiculoComponent } from './documentos-vehiculo/documentos-ve
     HomeComponent,
     VehiculosComponent,
     TipoDocumentoComponent,
-    DocumentosVehiculoComponent
+    DocumentosVehiculoComponent,
+    AsignarDocumentosComponent
   ],
   imports: [
     BrowserModule,

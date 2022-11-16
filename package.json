@@ -28,6 +28,8 @@
     "html2canvas": "^1.4.1",
     "jquery": "^3.6.0",
     "jspdf": "^2.5.1",
+    "ng2-file-upload": "^1.4.0",
+    "ngx-toastr": "^15.2.2",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.4.17",
     "tslib": "^2.3.0",

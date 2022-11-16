@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { routing,appRoutingProviders } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { BoldReportViewerModule } from '@boldreports/angular-reporting-component
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+
 // Report viewer
 import '@boldreports/javascript-reporting-controls/Scripts/bold.report-viewer.min';
 import { IdentityGuard } from "./services/identity.guard";
@@ -31,7 +33,7 @@ import { VehiculosComponent } from './vehiculos/vehiculos.component';
 import { TipoDocumentoComponent } from './tipo-documento/tipo-documento.component';
 import { DocumentosVehiculoComponent } from './documentos-vehiculo/documentos-vehiculo.component';
 import { AsignarDocumentosComponent } from './asignar-documentos/asignar-documentos.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { AsignarDocumentosComponent } from './asignar-documentos/asignar-documen
     BoldReportViewerModule,
     BrowserAnimationsModule,
     ScrollingModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FileUploadModule,
+    ReactiveFormsModule
   ],
   providers: [
     IdentityGuard,

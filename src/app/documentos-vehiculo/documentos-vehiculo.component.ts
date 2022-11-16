@@ -13,7 +13,9 @@ import { vehiculosService } from '../services/vehiculos.service';
 })
 export class DocumentosVehiculoComponent implements OnInit {
   data: any;
-  constructor(private _vehiculoService: vehiculosService, private _router:Router) { }
+  constructor(private _vehiculoService: vehiculosService, private _router:Router, private route: ActivatedRoute) { 
+  
+  }
 
 
   ngOnInit(): void {

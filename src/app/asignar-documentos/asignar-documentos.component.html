@@ -17,9 +17,10 @@
                                 <div class="col-sm-12 pb-3 form-group">
                                     <label for="exampleAccount" for="iddoc"><b>Documento *</b></label>
                                     <select class="form-select col" id="inputGroupSelect01" name="iddoc"
-                                        placeholder="iddoc" for="iddoc" #iddoc="ngModel" [(ngModel)]="documentosCF.iddoc"
-                                        required>
-                                        <option *ngFor="let td of docConFecha" value={{td.id}}>{{td.id}} - {{td.detdoc}}</option>
+                                        placeholder="iddoc" for="iddoc" #iddoc="ngModel"
+                                        [(ngModel)]="documentosCF.iddoc" required>
+                                        <option *ngFor="let td of docConFecha" value={{td.id}}>{{td.id}} - {{td.detdoc}}
+                                        </option>
                                     </select>
                                 </div>
                                 <!-- Segundo Nombre -->
@@ -54,12 +55,19 @@
                                 <div class="col-sm-12 pb-3 form-group">
                                     <label for="exampleAccount" for="observacion"><b>Observación</b></label>
                                     <input class="form-control" id="exampleAccount" name="observacion"
-                                        placeholder="Primer Nombre" type="text" #observacion="ngModel"
+                                        placeholder="Observacion" type="text" #observacion="ngModel"
                                         [(ngModel)]="documentosCF.observacion">
                                     <small *ngIf="!observacion.valid && observacion.touched"
                                         class="invalid-feedback d-block">
                                         El campo no es valido!
                                     </small>
+                                </div>
+                            </div>
+                            <div class="row mt-12">
+
+                                <div class="form-group">
+                                    <label for="image">Subir Soporte</label>
+                                    <input type="file" name="image" id="image" class="form-control" #image="ngModel" [(ngModel)]="documentosCF.image" (change)="uploadImage($event)">
                                 </div>
                             </div>
                         </div>
@@ -82,7 +90,7 @@
 
     </div>
     <div class="right">
-        <form #registerSFForm="ngForm" (ngSubmit)="onSubmit(registerSFForm)">
+        <form #registerSFForm="ngForm" (ngSubmit)="onSubmitSF(registerSFForm)">
             <div class="row justify-content-center">
                 <h2>
                     Documentos sin fecha.
@@ -99,24 +107,31 @@
                                 <div class="col-sm-12 pb-3 form-group">
                                     <label for="exampleAccount" for="iddoc"><b>Documento *</b></label>
                                     <select class="form-select col" id="inputGroupSelect01" name="iddoc"
-                                        placeholder="iddoc" for="iddoc" #iddoc="ngModel" [(ngModel)]="documentosSF.iddoc"
-                                        required>
-                                        <option *ngFor="let td of docSinFecha" value={{td.id}}> {{td.id}} - {{td.detdoc}}</option>
+                                        placeholder="iddoc" for="iddoc" #iddoc="ngModel"
+                                        [(ngModel)]="documentosSF.iddoc" required>
+                                        <option *ngFor="let td of docSinFecha" value={{td.id}}> {{td.id}} -
+                                            {{td.detdoc}}</option>
                                     </select>
                                 </div>
                             </div>
-                            <br>
+                           
                             <div class="row mt-12">
 
                                 <div class="col-sm-12 pb-3 form-group">
                                     <label for="exampleAccount" for="observacion"><b>Observación</b></label>
                                     <input class="form-control" id="exampleAccount" name="observacion"
-                                        placeholder="Primer Nombre" type="text" #observacion="ngModel"
+                                        placeholder="Observacion" type="text" #observacion="ngModel"
                                         [(ngModel)]="documentosSF.observacion">
                                     <small *ngIf="!observacion.valid && observacion.touched"
                                         class="invalid-feedback d-block">
                                         El campo no es valido!
                                     </small>
+                                </div>
+                            </div>
+                            <div class="row mt-12">
+                                <div class="form-group">
+                                    <label for="image">Subir Soporte</label>
+                                    <input type="file" name="image" id="image" class="form-control" #image="ngModel" [(ngModel)]="documentosSF.image" (change)="uploadImage($event)">
                                 </div>
                             </div>
                             <br>

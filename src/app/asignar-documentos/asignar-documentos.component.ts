@@ -11,6 +11,7 @@ import { documentosService } from '../services/documentos.service';
 
 
 
+
 const MURL: string = global.url + "documentos/save";
 
 @Component({
@@ -37,15 +38,30 @@ export class AsignarDocumentosComponent implements OnInit {
   data: any;
   identity: any;
 
+  res_doc:any = [];
+  filterPost = '';
+
+
   datos: any;
   constructor(private _tipo_documentoService: Tipo_documentoService, private route: ActivatedRoute, public formBuilder: FormBuilder, private _documentosService: documentosService) {
 
     this.identity = JSON.parse(localStorage.getItem('identity') + '');
     this.route.queryParams.subscribe(response => {
 
+      
       this.datos = JSON.parse(response['result']);
       this.documentosCF = new Documentos('', '', '', this.datos.id, '', this.identity.sub, '');
       this.documentosSF = new Documentos('', '', '', this.datos.id, '', this.identity.sub, '');
+      
+      this._documentosService.getDocumentos(this.documentosCF).subscribe(
+        response =>{
+          console.log("respuesta documentos");
+          console.log(response);
+          this.res_doc = response;
+        }
+      )
+    
+    
     })
 
     this.documentosCF = new Documentos('', '', '', this.datos.id, '', this.identity.sub, '');
@@ -82,6 +98,7 @@ export class AsignarDocumentosComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
+        form.reset();
         console.log(response);
         this.submitted = true;
         const formData = new FormData();
@@ -99,6 +116,7 @@ export class AsignarDocumentosComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             })
+            form.reset();
           }, error => {
             console.log(error);
             Swal.fire({
@@ -111,22 +129,18 @@ export class AsignarDocumentosComponent implements OnInit {
           }
         )
       }, error => {
-
+        console.log("error!");
+        console.log(error.error.message);
         Swal.fire({
           position: 'top-end',
           icon: 'error',
-          title: 'Datos NO guardados!',
+          title: 'Datos NO guardados! <br>'+'<h4>'+ error.error.message+'</h4>',
           showConfirmButton: false,
-          timer: 1500
+          timer: 5000
         })
       }
     );
   }
-
-
-
-
-
 
   onSubmitSF(form) {
     console.log("datos******************");
@@ -140,6 +154,7 @@ export class AsignarDocumentosComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500
         })
+        form.reset();
         console.log(response);
         this.submitted = true;
         const formData = new FormData();
@@ -157,6 +172,7 @@ export class AsignarDocumentosComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500
             })
+            
           }, error => {
             console.log(error);
             Swal.fire({
@@ -173,9 +189,9 @@ export class AsignarDocumentosComponent implements OnInit {
         Swal.fire({
           position: 'top-end',
           icon: 'error',
-          title: 'Datos NO guardados!',
+          title: 'Datos NO guardados! '+ error.message['message'],
           showConfirmButton: false,
-          timer: 1500
+          timer: 5000
         })
       }
     );
@@ -185,6 +201,23 @@ export class AsignarDocumentosComponent implements OnInit {
     this.files = event.target.files[0];
 
     console.log(this.files);
+  }
+  vencido(datos){
+    if(datos.vencido){
+      Swal.fire({
+        icon: 'error',
+        title: 'Información',
+        text: '¡Documento Vencido!',
+        footer: datos.dias+' dia(s) de vencido'
+      })
+    }else{
+      Swal.fire({
+        icon: 'info',
+        title: 'Información',
+        text: 'Documento Vigente.',
+        footer:'faltan '+ datos.dias+' dia(s) para vencerse'
+      })
+    }
   }
   getTipo_documento() {
     this._tipo_documentoService.getTipo_documento(this.documentosCF).subscribe(

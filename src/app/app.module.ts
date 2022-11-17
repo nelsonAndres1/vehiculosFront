@@ -34,6 +34,8 @@ import { TipoDocumentoComponent } from './tipo-documento/tipo-documento.componen
 import { DocumentosVehiculoComponent } from './documentos-vehiculo/documentos-vehiculo.component';
 import { AsignarDocumentosComponent } from './asignar-documentos/asignar-documentos.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ConsultaComponent } from './consulta/consulta.component';
+import { ConsultaVehiculoComponent } from './consulta-vehiculo/consulta-vehiculo.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { FileUploadModule } from 'ng2-file-upload';
     VehiculosComponent,
     TipoDocumentoComponent,
     DocumentosVehiculoComponent,
-    AsignarDocumentosComponent
+    AsignarDocumentosComponent,
+    ConsultaComponent,
+    ConsultaVehiculoComponent
   ],
   imports: [
     BrowserModule,

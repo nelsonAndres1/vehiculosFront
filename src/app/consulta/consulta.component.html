@@ -1,0 +1,32 @@
+
+<div class="main">
+  
+    <!-- Actual search box -->
+    <!-- <div class="form-group has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" class="form-control" placeholder="Search">
+    </div> -->
+    
+    <!-- Another variation with a button -->
+    <h3>Buscar Vehiculo a agregar documentos</h3>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Buscar Vehiculo" (input)="searchVehiculos($event)" required>
+      <div class="input-group-append">
+   <!--      <button class="btn btn-secondary" type="button">
+          <i class="fa fa-search">Buscar</i>
+        </button> -->
+      </div>
+      <div class="col-sm-12">
+        <div class="card card-body mb-1" *ngFor="let result of data"
+            (click)="getVehiculo(result)" style="cursor: pointer;">
+            <h4> Placa: {{result.plaveh}} </h4>
+            <small class="text-primary">
+               <h4>Detalle: {{result.detveh}}</h4>
+            </small>
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-success">Agregar</button>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>

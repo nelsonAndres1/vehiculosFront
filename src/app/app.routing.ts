@@ -10,6 +10,8 @@ import { LoginGuard } from "./services/login.guard";
 import { TipoDocumentoComponent } from "./tipo-documento/tipo-documento.component";
 import { DocumentosVehiculoComponent } from "./documentos-vehiculo/documentos-vehiculo.component";
 import { AsignarDocumentosComponent } from "./asignar-documentos/asignar-documentos.component";
+import { ConsultaComponent } from "./consulta/consulta.component";
+import { ConsultaVehiculoComponent } from "./consulta-vehiculo/consulta-vehiculo.component";
 const appRoutes: Routes = [
     {path: '', component: LoginComponent, canActivate:[LoginGuard]},
     {path: 'login', component: LoginComponent, canActivate:[LoginGuard]},
@@ -20,6 +22,8 @@ const appRoutes: Routes = [
     {path: 'documentos_vehiculo', component: DocumentosVehiculoComponent , canActivate: [IdentityGuard]},
     {path: 'home', component: HomeComponent, canActivate: [IdentityGuard]},
     {path: 'asignar_documentos', component: AsignarDocumentosComponent, canActivate: [IdentityGuard]},
+    {path: 'consulta', component: ConsultaComponent, canActivate: [IdentityGuard]},
+    {path: 'consulta_vehiculo', component: ConsultaVehiculoComponent, canActivate: [IdentityGuard]},
     {path: '**', component: ErrorComponent}
 ];
 

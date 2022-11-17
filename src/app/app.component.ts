@@ -79,15 +79,7 @@ export class AppComponent implements OnInit,
 
                 localStorage.removeItem('identity');
                 localStorage.removeItem('token');
-                localStorage.removeItem('tpago');
-                localStorage.removeItem('token1');
-                localStorage.removeItem('tpa');
-                localStorage.removeItem('identity2');
-                localStorage.removeItem('identity1');
-                localStorage.removeItem('permisos');
-                localStorage.removeItem('tokenConsultado');
-                localStorage.removeItem('tokenConsultado2');
-                localStorage.removeItem('numero');
+
 
                 this.identity = null;
                 this.token = null;

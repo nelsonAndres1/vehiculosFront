@@ -25,4 +25,14 @@ export class documentosService {
         const headers = new HttpHeaders();
         return this._http.post(this.url + 'Documentos/file', data, { headers: headers });
     }
+
+    getDocumentos(user: any): Observable<any> {
+        let json = JSON.stringify(user);
+        let params = 'json=' + json;
+        console.log(params);
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        return this._http.post(this.url + 'Documentos/getDocumentos', params, { headers: headers });
+    }
+
+    
 }

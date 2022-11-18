@@ -11,7 +11,7 @@ import { clase_vehiculoService } from '../services/clase_vehiculo.service';
 @Component({
   selector: 'app-vehiculos',
   templateUrl: './vehiculos.component.html',
-  styleUrls: ['./vehiculos.component.scss'],
+  styleUrls: ['./vehiculos.component.css'],
   providers: [Gener02Service, clase_vehiculoService, vehiculosService]
 })
 

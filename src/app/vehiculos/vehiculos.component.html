@@ -12,7 +12,103 @@
 </head>
 
 <body>
-    <div class="contenedor-formularios">
+    <form #tipForm="ngForm" (ngSubmit)="onSubmit(tipForm)">
+        <div class="row justify-content-center">
+            <div class="col-md-10 offset-md-1">
+                <span class="anchor" id="formComplex"></span>
+                <div class="card card-outline-secondary">
+                    <div class="card-header">
+                        <h3 class="mb-0">Ingrese la información requerida</h3>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row mt-12">
+
+                            <div class="col-sm-4 pb-3 form-group">
+                                <label for="exampleAccount" for="iddoc"><b>Documento *</b></label>
+                                <select class="form-select" on aria-label="Default select example" #tipveh="ngModel"
+                                [(ngModel)]="vehiculos.tipveh" name="tipveh" required>
+                                <option *ngFor="let result of clase_vehiculos" value={{result.id}}> {{result.id}} -
+                                    {{result.detalle}}</option>
+                                </select>
+                                <small *ngIf="!tipveh.valid && tipveh.touched" class="invalid-feedback d-block">
+                                    Dato Incorrecto!
+                                </small>
+                            </div>
+
+                            <div class="col-sm-4 pb-3 form-group">
+
+                                <label for="exampleAccount" for="fecini"><b>Nombre del Vehiculo *</b></label>
+                                <input type="text" class="form-control" #detveh="ngModel" [(ngModel)]="vehiculos.detveh" name="detveh" required>
+                                <small *ngIf="!detveh.valid && detveh.touched" class="invalid-feedback d-block">
+                                    ¡Campo requerido!
+                                </small>
+
+                            </div>
+
+
+                            <div class="col-sm-4 pb-3 form-group">
+
+                                <label for="exampleAccount" for="fecini"><b>Placa del Vehiculo *</b></label>
+                                <input type="text" #plaveh="ngModel" class="form-control" [(ngModel)]="vehiculos.plaveh" name="plaveh" required>
+                                <small *ngIf="!plaveh.valid && plaveh.touched" class="invalid-feedback d-block">
+                                    ¡Campo requerido!
+                                </small>
+
+                            </div>
+                        </div>
+
+                        <div class="row mt-12">
+                            <div class="col-sm-6 pb-3 form-group">
+                                <label for="exampleAccount" for="fecini"><b>Marca del Vehiculo *</b></label>
+                                <input type="text" #marveh="ngModel" class="form-control" [(ngModel)]="vehiculos.marveh" name="marveh" required>
+                                <small *ngIf="!marveh.valid && marveh.touched" class="invalid-feedback d-block">
+                                    ¡Campo requerido!
+                                </small>
+                            </div>
+                            <div class="col-sm-6 pb-3 form-group">
+                                <label for="exampleAccount" for="fecini"><b>Modelo del Vehiculo *</b></label>
+                                <input type="text" #modveh="ngModel" class="form-control" [(ngModel)]="vehiculos.modveh" name="modveh" required>
+                                <small *ngIf="!modveh.valid && modveh.touched" class="invalid-feedback d-block">
+                                    ¡Campo requerido!
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row mt-12">
+                            <div class="col-sm-12 pb-3 form-group">
+                                <label for="exampleAccount" for="fecini"><b>Observaciones del Vehiculo *</b></label>
+                                <input type="text" #observacion="ngModel" class="form-control" [(ngModel)]="vehiculos.observacion" name="observacion"
+                                required>
+                                <small *ngIf="!observacion.valid && observacion.touched" class="invalid-feedback d-block">
+                                    ¡Campo requerido!
+                                </small>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="card-footer">
+                        <div class="row mt-4">
+                            <div class="float-right">
+                                <div class="row mt-4">
+                                    <div class="col-sm-10 pb-3">
+                                        <input class="btn btn-success" type="submit" value="Enviar Información"
+                                            [disabled]="tipForm.invalid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+    <!-- <div class="contenedor-formularios">
         <div id="registrarse">
             <h1>Ingrese los datos requeridos</h1>
             <form action="#" #tipForm="ngForm" (ngSubmit)="onSubmit(tipForm)">
@@ -91,38 +187,47 @@
                 <input type="submit" class="button button-block" value="Enviar Datos">
             </form>
         </div>
-    </div>
+    </div> -->
+
+
+
+
+
+
+
+
+
 
 
     <cdk-virtual-scroll-viewport style="height: 600px" itemSize=5>
         <table class="table">
-          <thead class="thead-dark">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Detalle</th>
-              <th scope="col">Placa</th>
-              <th scope="col">Marca</th>
-              <th scope="col">Modelo</th>
-              <th scope="col">Tipo</th>
-              <th scope="col">Observacion</th>
-            </tr>
-          </thead>
-      
-          <tbody>
-            <tr *cdkVirtualFor="let dt of vehiculos2 | filter:filterPost">
-              <th scope="row">{{dt.id}}</th>
-              <td>{{dt.detveh}}</td>
-              <td>{{dt.plaveh}}</td>
-              <td>{{dt.marveh}}</td>
-              <td>{{dt.modveh}}</td>
-              <td>{{dt.tipveh}}</td>
-              <td>{{dt.observacion}}</td>
-            </tr>
-      
-          </tbody>
-      
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Detalle</th>
+                    <th scope="col">Placa</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Observacion</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *cdkVirtualFor="let dt of vehiculos2 | filter:filterPost">
+                    <th scope="row">{{dt.id}}</th>
+                    <td>{{dt.detveh}}</td>
+                    <td>{{dt.plaveh}}</td>
+                    <td>{{dt.marveh}}</td>
+                    <td>{{dt.modveh}}</td>
+                    <td>{{dt.tipveh}}</td>
+                    <td>{{dt.observacion}}</td>
+                </tr>
+
+            </tbody>
+
         </table>
-      </cdk-virtual-scroll-viewport>
+    </cdk-virtual-scroll-viewport>
 
 
 </body>

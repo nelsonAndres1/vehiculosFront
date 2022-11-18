@@ -5,7 +5,7 @@ import { Gener02 } from '../models/gener02';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { Tipo_vehiculo } from '../models/tipo_vehiculo';
 import { clase_vehiculoService } from '../services/clase_vehiculo.service';
-@Component({ selector: 'app-claseVehiculo', templateUrl: './clase_vehiculo.component.html', styleUrls: ['./clase_vehiculo.component.scss'], providers: [Gener02Service, clase_vehiculoService] })
+@Component({ selector: 'app-claseVehiculo', templateUrl: './clase_vehiculo.component.html', styleUrls: ['./clase_vehiculo.component.css'], providers: [Gener02Service, clase_vehiculoService] })
 export class Clase_vehiculoComponent implements OnInit {
 
     public tipo_vehiculo: Tipo_vehiculo;

@@ -6,7 +6,7 @@ import { Tipo_documentoService } from '../services/tipo_documento.service';
 @Component({
   selector: 'app-tipo-documento',
   templateUrl: './tipo-documento.component.html',
-  styleUrls: ['./tipo-documento.component.scss'],
+  styleUrls: ['./tipo-documento.component.css'],
   providers: [Tipo_documentoService]
 })
 export class TipoDocumentoComponent implements OnInit {

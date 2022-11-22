@@ -36,6 +36,9 @@ import { AsignarDocumentosComponent } from './asignar-documentos/asignar-documen
 import { FileUploadModule } from 'ng2-file-upload';
 import { ConsultaComponent } from './consulta/consulta.component';
 import { ConsultaVehiculoComponent } from './consulta-vehiculo/consulta-vehiculo.component';
+import { ConductoresComponent } from './conductores/conductores.component';
+import { LicenciasConductoresComponent } from './licencias-conductores/licencias-conductores.component';
+import { ConductoresVehiculosComponent } from './conductores-vehiculos/conductores-vehiculos.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { ConsultaVehiculoComponent } from './consulta-vehiculo/consulta-vehiculo
     DocumentosVehiculoComponent,
     AsignarDocumentosComponent,
     ConsultaComponent,
-    ConsultaVehiculoComponent
+    ConsultaVehiculoComponent,
+    ConductoresComponent,
+    LicenciasConductoresComponent,
+    ConductoresVehiculosComponent
   ],
   imports: [
     BrowserModule,

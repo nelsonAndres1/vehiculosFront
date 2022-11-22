@@ -3,18 +3,21 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import Swal from 'sweetalert2';
 import { vehiculosService } from '../services/vehiculos.service';
+import { documentosService } from '../services/documentos.service';
 
 
 @Component({
   selector: 'app-documentos-vehiculo',
   templateUrl: './documentos-vehiculo.component.html',
   styleUrls: ['./documentos-vehiculo.component.css'],
-  providers: [vehiculosService]
+  providers: [vehiculosService, documentosService]
 })
 export class DocumentosVehiculoComponent implements OnInit {
   data: any;
-  constructor(private _vehiculoService: vehiculosService, private _router:Router, private route: ActivatedRoute) { 
-  
+  constructor(private _vehiculoService: vehiculosService, private _documentoService: documentosService, private _router:Router, private route: ActivatedRoute) { 
+    this._documentoService.Download('').subscribe(
+      
+    )
   }
 
 

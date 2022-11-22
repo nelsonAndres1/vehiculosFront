@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { global } from "./global";
 
 @Injectable()
-export class documentosService {
+export class conductoresService {
     public url: string;
     public identity: any;
     public token: any;
@@ -18,27 +18,26 @@ export class documentosService {
         let params = 'json=' + json;
         console.log(params);
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-        return this._http.post(this.url + 'Documentos/register', params, { headers: headers });
-    }
-    uploadData(data) {
-
-        const headers = new HttpHeaders();
-        return this._http.post(this.url + 'Documentos/file', data, { headers: headers });
-    }
-    Download(data) {
-
-        const headers = new HttpHeaders();
-        return this._http.get(this.url + 'Documentos/getDocumentos', data);
+        return this._http.post(this.url + 'Conductores/register', params, { headers: headers });
     }
 
-    
 
-    getDocumentos(user: any): Observable<any> {
+    /*  */
+
+    getConductores(user: any): Observable<any> {
         let json = JSON.stringify(user);
         let params = 'json=' + json;
         console.log(params);
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-        return this._http.post(this.url + 'Documentos/getDocumentos', params, { headers: headers });
+        return this._http.post(this.url + 'Conductores/getConductores', params, { headers: headers });
+    }
+
+    getLicencias(user: any): Observable<any> {
+        let json = JSON.stringify(user);
+        let params = 'json=' + json;
+        console.log(params);
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        return this._http.post(this.url + 'Conductores/getLicencias', params, { headers: headers });
     }
 
     

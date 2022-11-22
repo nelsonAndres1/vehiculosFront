@@ -12,6 +12,9 @@ import { DocumentosVehiculoComponent } from "./documentos-vehiculo/documentos-ve
 import { AsignarDocumentosComponent } from "./asignar-documentos/asignar-documentos.component";
 import { ConsultaComponent } from "./consulta/consulta.component";
 import { ConsultaVehiculoComponent } from "./consulta-vehiculo/consulta-vehiculo.component";
+import { ConductoresComponent } from "./conductores/conductores.component";
+import { LicenciasConductoresComponent } from "./licencias-conductores/licencias-conductores.component";
+import { ConductoresVehiculosComponent } from "./conductores-vehiculos/conductores-vehiculos.component";
 const appRoutes: Routes = [
     {path: '', component: LoginComponent, canActivate:[LoginGuard]},
     {path: 'login', component: LoginComponent, canActivate:[LoginGuard]},
@@ -24,6 +27,9 @@ const appRoutes: Routes = [
     {path: 'asignar_documentos', component: AsignarDocumentosComponent, canActivate: [IdentityGuard]},
     {path: 'consulta', component: ConsultaComponent, canActivate: [IdentityGuard]},
     {path: 'consulta_vehiculo', component: ConsultaVehiculoComponent, canActivate: [IdentityGuard]},
+    {path: 'conductores', component: ConductoresComponent, canActivate: [IdentityGuard]},
+    {path: 'licencia_conductores', component: LicenciasConductoresComponent, canActivate: [IdentityGuard]},
+    {path: 'conductores_vehiculo', component: ConductoresVehiculosComponent, canActivate: [IdentityGuard]},
     {path: '**', component: ErrorComponent}
 ];
 
